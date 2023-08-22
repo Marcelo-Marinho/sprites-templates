@@ -1,0 +1,171 @@
+[gd_scene load_steps=4 format=3 uid="uid://54djkw42gmrb"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_qxiln"]
+[ext_resource type="FontFile" uid="uid://d1g331mkfur24" path="res://tweet.ttf" id="2_a8dry"]
+
+[sub_resource type="FontVariation" id="FontVariation_0hmqp"]
+base_font = ExtResource("2_a8dry")
+
+[node name="LAN" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxiln")
+
+[node name="ListaJogadores" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -222.0
+offset_right = 334.0
+offset_bottom = 107.0
+grow_vertical = 2
+
+[node name="Criar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 435.0
+offset_right = 135.0
+offset_bottom = 463.0
+text = "Criar"
+
+[node name="Conectar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 435.0
+offset_right = 268.0
+offset_bottom = 463.0
+text = "Entrar"
+
+[node name="Comecar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 435.0
+offset_right = 399.0
+offset_bottom = 463.0
+text = "Start"
+
+[node name="IpEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 32.0
+offset_right = 714.0
+offset_bottom = 63.0
+placeholder_text = "127.0.0.1"
+
+[node name="NomeEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 80.0
+offset_right = 714.0
+offset_bottom = 111.0
+theme_override_fonts/font = SubResource("FontVariation_0hmqp")
+theme_override_font_sizes/font_size = 20
+text = "Player 😎"
+placeholder_text = "Nome"
+
+[node name="r" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 134.0
+offset_right = 466.063
+offset_bottom = 165.0
+placeholder_text = "Color R"
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="g" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 134.0
+offset_right = 553.063
+offset_bottom = 165.0
+placeholder_text = "Color G"
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="b" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 574.0
+offset_top = 134.0
+offset_right = 641.063
+offset_bottom = 165.0
+placeholder_text = "Color B"
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 32.0
+offset_right = 374.0
+offset_bottom = 63.0
+text = "IP:"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 84.0
+offset_right = 388.0
+offset_bottom = 115.0
+text = "NOME:"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 134.0
+offset_right = 374.0
+offset_bottom = 165.0
+text = "RGB:"
+
+[node name="ip_text" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 378.0
+offset_right = 714.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Mande esse IP para seus amigos se conectarem:"
+editable = false
+virtual_keyboard_enabled = false
+
+[node name="ErrorPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 348.0
+offset_top = 182.0
+offset_right = 714.0
+offset_bottom = 353.0
+
+[node name="ok" type="Button" parent="ErrorPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.5
+offset_top = -32.0
+offset_right = 36.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "OK"
+
+[node name="erro" type="Label" parent="ErrorPanel"]
+layout_mode = 0
+offset_right = 366.0
+offset_bottom = 139.0
+text = "Ocorreu um erro...
+Tente novamente"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Criar" to="." method="_on_criar_pressed"]
+[connection signal="pressed" from="Conectar" to="." method="_on_conectar_pressed"]
+[connection signal="pressed" from="Comecar" to="." method="_on_comecar_pressed"]
+[connection signal="pressed" from="ErrorPanel/ok" to="." method="_on_ok_pressed"]

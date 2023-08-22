@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1qc0qew3iw1t"]
+
+[ext_resource type="Script" path="res://game/lvl0.gd" id="1_bd3fc"]
+[ext_resource type="Texture2D" uid="uid://t13xjqqsnh8v" path="res://imgs/tile_test.png" id="2_6yi7k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f11h8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjece"]
+texture = ExtResource("2_6yi7k")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_hk4wh"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_f11h8")
+sources/0 = SubResource("TileSetAtlasSource_vjece")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fewej"]
+properties/0/path = NodePath("TileMap:tile_set")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("TileMap:cell_quadrant_size")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("TileMap:collision_visibility_mode")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("TileMap:layers")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath(".:position")
+properties/4/spawn = true
+properties/4/sync = true
+
+[node name="lvl0" type="Node2D"]
+script = ExtResource("1_bd3fc")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_hk4wh")
+collision_visibility_mode = 1
+format = 2
+layer_0/name = "a"
+
+[node name="jogadores" type="Node2D" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_fewej")
+
+[node name="p1" type="Node2D" parent="."]
+position = Vector2(375, 100)
+
+[node name="p2" type="Node2D" parent="."]
+position = Vector2(225, 210)
+
+[node name="p3" type="Node2D" parent="."]
+position = Vector2(525, 210)
+
+[node name="p4" type="Node2D" parent="."]
+position = Vector2(275, 375)
+
+[node name="p5" type="Node2D" parent="."]
+position = Vector2(475, 375)
+
+[node name="Node 2D" type="Node2D" parent="."]
